@@ -1,17 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Image } from 'react-native';
 
 export default class AppWeather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       city: '',
-      forecast: ''
+      forecast: {
+        main: '-',
+        description: '-',
+        temp: 0,
+        sunrise: 0,
+        sunset: 0,
+        pressure: 0,
+        humidity: 0,
+        sea_level: 0,
+        grnd_level: 0,
+        speed: 0,
+      }
     };
   }
 
   getWeather= () => {
-    let url = 'http://api.openweathermap.org/data2.5/weather?q=' + this.state.city + '&appid=56da8a985259a0dda167e872b89039a9&units=metric';
+    let url = 'http://api.openweathermap.org/data/2.5/weather?q='+ this.state.city + '&appid=56da8a985259a0dda167e872b89039a9&units=metric';
     fetch(url)
     .then((response) => response.json())
     .then((responseJson) => {
@@ -33,21 +44,26 @@ export default class AppWeather extends React.Component {
           <Text style={styles.text1}>Weather Forecast</Text>
         </View>
         <View style={styles.box2}>
-          <Text style={styles.text2}>Masukkan nama kota lalu tekan enter </Text>
+          <Text style={styles.text2}>Masukkan Nama Kota </Text>
           <TextInput
-            onSubmitEditing={
-              (event) => this.setState({ city: event.nativeEvent.text })
-            }
+            style={styles.textinput}
+            onChangeText={(city) => this.setState({ city })}
+          />
+          <Button
+            onPress={() => this.getWeather()}
+            title="Cari"
+            color="#1997E4"
+            padding="10"
+            accessibilityLabel="Klik untuk melihat cuaca"
           />
         </View>
         <View style={styles.box3}>
-          getWeather();
           <Text>Main : {this.state.forecast.main}</Text>
-          <Text>Description : {this.state.forecast.description}</Text>
           <Text>Temperature : {this.state.forecast.temp}</Text>
+          <Text>Description : {this.state.forecast.description}</Text>
         </View>
         <View style={styles.box4}>
-          <Text style={styles.text1}>by PTI Undiksha</Text>
+          <Text style={styles.text1}>by Komang Aditya Pratama</Text>
         </View>
       </View>
     );
@@ -69,14 +85,14 @@ const styles = StyleSheet.create({
   },
   box2: {
     backgroundColor: '#1E90FF',
-    flex: 1,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
   box3: {
     backgroundColor: '#00ADFF',
-    flex: 5,
+    flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -95,5 +111,9 @@ const styles = StyleSheet.create({
   text2: {
     color: 'black',
     fontSize: 20
+  },
+  textinput: {
+    color: 'black',
+    margin: 30
   }
 });

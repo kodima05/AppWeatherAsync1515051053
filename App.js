@@ -3,8 +3,8 @@ import React from 'react';
 // import VolumeBalok from './src/latihan/VolumeBalok';
 // import Header from './src/Cuaca/Header';
 // import PrakiraanCuaca from './src/Cuaca/PrakiraanCuaca';
-import BelajarLayout from './src/latihan/BelajarLayout';
-// import AppWeather from './src/AppWeather1515051053/AppWeather';
+// import BelajarLayout from './src/latihan/BelajarLayout';
+import AppWeather from './src/AppWeather1515051053/AppWeather';
 
 export default class App extends React.Component {
   render() {
@@ -13,8 +13,8 @@ export default class App extends React.Component {
       //   <Header headerText={'Prakiraan Cuaca'} />
       //   <PrakiraanCuaca />
       // </View>
-      <BelajarLayout />
-      // <AppWeather />
+      // <BelajarLayout />
+      <AppWeather />
     );
   }
 }
