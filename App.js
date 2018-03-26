@@ -4,7 +4,8 @@ import React from 'react';
 // import Header from './src/Cuaca/Header';
 // import PrakiraanCuaca from './src/Cuaca/PrakiraanCuaca';
 // import BelajarLayout from './src/latihan/BelajarLayout';
-import AppWeather from './src/AppWeather1515051053/AppWeather';
+// import AppWeather from './src/AppWeather1515051053/AppWeather';
+import AppWeatherAsync from './src/AppWeatherAsync1515051053/AppWeatherAsync';
 
 export default class App extends React.Component {
   render() {
@@ -14,7 +15,8 @@ export default class App extends React.Component {
       //   <PrakiraanCuaca />
       // </View>
       // <BelajarLayout />
-      <AppWeather />
+      // <AppWeather />
+      <AppWeatherAsync />
     );
   }
 }
